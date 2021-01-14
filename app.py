@@ -1,14 +1,14 @@
 from flask import Flask, render_template
 import requests
 import json
-import urllib2
+import urllib3
 import json 
 
 app = Flask(__name__)
 
 @app.route('/')
 def get_bitcoin():
-    json_obj = urllib2.urlopen(url)
+    json_obj = urllib3.urlopen(url)
     data = json.load(json_obj)
     Sats = (data[address]['final_balance'])
     btc = Sats/100000000
