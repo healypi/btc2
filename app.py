@@ -8,7 +8,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def get_bitcoin():
-    address = raw_input('Type or Paste BTC address to reveal balance  ')
+    address = input('Type or Paste BTC address to reveal balance  ')
     url = 'https://blockchain.info/balance?active='+address+'&?format=hex'
     r = requests.get(url)
     data = r.json()
@@ -18,5 +18,5 @@ def get_bitcoin():
     fd = "${:,.2f}".format(d)
     return render_template('index.html', btc=btc)
 
-    r = requests.get('https://api.punkapi.com/v2/beers/random')
+
   
