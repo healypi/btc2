@@ -8,6 +8,9 @@ app = Flask(__name__)
 
 @app.route('/')
 def get_bitcoin():
+    address = raw_input('Type or Paste BTC address to reveal balance  ')
+    url = 'https://blockchain.info/balance?active='+address+'&?format=hex'
+    json_obj = urllib2.urlopen(url)
     json_obj = urllib3.urlopen(url)
     data = json.load(json_obj)
     Sats = (data[address]['final_balance'])
