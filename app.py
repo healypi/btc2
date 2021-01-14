@@ -10,10 +10,13 @@ app = Flask(__name__)
 def get_bitcoin():
     address = raw_input('Type or Paste BTC address to reveal balance  ')
     url = 'https://blockchain.info/balance?active='+address+'&?format=hex'
-    json_obj = urllib3.urlopen(url)
-    data = json.load(json_obj)
+    r = requests.get(url)
+    data = r.json()
     Sats = (data[address]['final_balance'])
     btc = Sats/100000000
     d = btc*34000
     fd = "${:,.2f}".format(d)
     return render_template('index.html', btc=btc)
+
+    r = requests.get('https://api.punkapi.com/v2/beers/random')
+  
