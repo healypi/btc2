@@ -14,8 +14,6 @@ def get_bitcoin():
     data = r.json()
     Sats = (data[address]['final_balance'])
     btc = Sats/100000000
-    d = btc*34000
-    fd = "${:,.2f}".format(d)
     return render_template('index.html', btc=btc)
 
 
